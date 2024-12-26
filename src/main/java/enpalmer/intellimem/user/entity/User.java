@@ -1,9 +1,9 @@
-package enpalmer.intellimem.employee;
+package enpalmer.intellimem.user.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity
@@ -11,14 +11,12 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Employee {
+@Table(name = "user_table")
+public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
 
-    private String name;
-
-    private String dept;
-
-    private long salary;
+    private String username;
+    private String password;
 }

@@ -17,5 +17,3 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
-
-OPENAI_API_KEY: ${OPENAI_API_KEY}

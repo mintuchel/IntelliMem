@@ -1,5 +1,6 @@
-package enpalmer.intellimem.domain.user;
+package enpalmer.intellimem.domain.user.api;
 
+import enpalmer.intellimem.domain.user.service.UserService;
 import enpalmer.intellimem.domain.user.dto.CreateUserRequest;
 import enpalmer.intellimem.domain.user.dto.UserInfoResponse;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,8 +1,9 @@
-package enpalmer.intellimem.domain.user;
+package enpalmer.intellimem.domain.user.service;
 
 import enpalmer.intellimem.domain.user.dto.CreateUserRequest;
 import enpalmer.intellimem.domain.user.dto.UserInfoResponse;
 import enpalmer.intellimem.domain.user.entity.User;
+import enpalmer.intellimem.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

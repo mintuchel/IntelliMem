@@ -1,4 +1,4 @@
-package enpalmer.intellimem.domain.user;
+package enpalmer.intellimem.domain.user.repository;
 
 import enpalmer.intellimem.domain.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

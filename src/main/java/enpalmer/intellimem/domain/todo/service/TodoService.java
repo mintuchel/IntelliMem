@@ -5,7 +5,7 @@ import enpalmer.intellimem.domain.todo.dto.UpdateTodoStatusRequest;
 import enpalmer.intellimem.domain.todo.dto.CreateTodoRequest;
 import enpalmer.intellimem.domain.todo.entity.Todo;
 import enpalmer.intellimem.domain.todo.repository.TodoRepository;
-import enpalmer.intellimem.domain.user.UserRepository;
+import enpalmer.intellimem.domain.user.repository.UserRepository;
 import enpalmer.intellimem.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

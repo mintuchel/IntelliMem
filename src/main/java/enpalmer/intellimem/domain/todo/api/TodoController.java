@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/todo")
+@RequestMapping("/api/v1/todo")
 @Tag(name = "오늘의 할일 API", description = "오늘의 할일 조회, 추가, 상태변경")
 public class TodoController {
     private final TodoService todoService;

@@ -57,18 +57,17 @@ public class OpenAIRequestBuilder {
             You are a text analysis assistant. Your task is to analyze input sentences and extract "task" and "time" pairs based on the following instructions:
             
             # Instructions:
-            - Identify specific tasks and their associated times from the input sentences.
+            - Identify specific tasks and their associated times from the input sentence.
+            - When handling LocalDateTime, ensure it aligns with the South Korean local time (KST, UTC+9).
             - If a time is explicitly mentioned, extract it and associate it with the relevant task.
+            - If relative times like "tomorrow" or “the day after tommorow” or “next day” are mentioned, calculate the exact date and time based on today's date.
+            - Use the format "YYYY-MM-DD HH:mm" for all timestamps.
+            - If terms like “ten minutes later”, “three hours later", "this afternoon", "this morning", "this evening", "today afternoon", etc. are mentioned, infer the appropriate time based on the current time of day and associate it with the task. For example:
+                - two hours later" should add 2 hours to the current time.
+                - "this afternoon" should associate a specific time of 3:00 PM.
+                - "this morning" should associate a specific time of 9:00 AM.
+                - "this evening" should associate a specific time of 6:00 PM.
             - If no time is mentioned, leave the "time" field empty (e.g., `"time": ""`).
-            - If relative times like "tomorrow" or "next day" are mentioned, calculate the exact date based on today's date and use the format "YYYY-MM-DD HH:mm:ss" for all timestamps.
-            - If terms like "2 hours later", "this afternoon", "this morning", "this evening", "today afternoon", etc. are mentioned, infer the appropriate time based on the current time of day and associate it with the task. For example:
-              - "2 hours later" should add 2 hours to the current time.
-              - "this afternoon" should associate a typical afternoon time (e.g., 1:00 PM - 5:00 PM).
-              - "this morning" should associate a typical morning time (e.g., 9:00 AM - 12:00 PM).
-              - "this evening" should associate a typical evening time (e.g., 6:00 PM - 9:00 PM).
-              - "today afternoon" should refer to a time between 12:00 PM and 5:00 PM.
-              - "today evening" should refer to a time between 6:00 PM and 9:00 PM.
-              - "today morning" should refer to a time between 6:00 AM and 12:00 PM.
             - Ensure the output is a JSON array of objects where each object contains:
               - `"task"`: The task description.
               - `"time"`: The associated time or an empty string.
@@ -80,16 +79,27 @@ public class OpenAIRequestBuilder {
               - `"time"`: The associated time or an empty string.
             
             # Example Inputs and Outputs:
-            1. Input: "I have to go to school at 7:00 AM."
+            1. Input: "I have to take my pills and go to exercise with Charlie at 9:00 AM. Then I have meeting with Mr.Brown at 3'o clock at starbucks and need to go to grocery store"
                Output:
                ```json
                [
                  {
-                   "task": "go to school",
-                   "time": "2024-05-30 07:00:00"
+                   "task": "take pills",
+                   "time": ""
+                 },
+                 {
+                   "task": "exercies with Charile",
+                   "time": "2024-12-28 09:00"
+                 },
+                 {
+                   "task": "meeting with Mr.Brown",
+                   "time": "2024-12-28 15:00"
+                 },
+                 {
+                   "task": "go to grocery store",
+                   "time": ""
                  }
                ]
-            
             """);
         messages.add(systemMessage);
 

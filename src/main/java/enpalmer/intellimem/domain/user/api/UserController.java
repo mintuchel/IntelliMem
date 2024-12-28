@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/{userId}")
-    @Operation(summary = "특정 유저 정보 조회")
-    public UserInfoResponse getUserById(@PathVariable int userId){
-        return userService.getUserById(userId);
-    }
-
     @PostMapping("")
     @Operation(summary = "특정 유저 회원가입")
     public int createNewUser(@RequestBody CreateUserRequest createUserRequest){
         return userService.createNewUser(createUserRequest);
+    }
+
+    @GetMapping("/{userId}")
+    @Operation(summary = "특정 유저 정보 조회")
+    public UserInfoResponse getUserById(@PathVariable int userId){
+        return userService.getUserById(userId);
     }
 }

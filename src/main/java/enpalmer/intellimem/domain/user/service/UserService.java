@@ -4,6 +4,8 @@ import enpalmer.intellimem.domain.user.dto.CreateUserRequest;
 import enpalmer.intellimem.domain.user.dto.UserInfoResponse;
 import enpalmer.intellimem.domain.user.entity.User;
 import enpalmer.intellimem.domain.user.repository.UserRepository;
+import enpalmer.intellimem.global.exception.errorcode.UserErrorCode;
+import enpalmer.intellimem.global.exception.exception.UserException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +19,7 @@ public class UserService {
     public UserInfoResponse getUserById(int userId){
         return userRepository.findById(userId)
                 .map(user -> new UserInfoResponse(user.getId(), user.getUsername(), user.getPassword()))
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(()-> new UserException(UserErrorCode.NOT_FOUND));
     }
 
     @Transactional

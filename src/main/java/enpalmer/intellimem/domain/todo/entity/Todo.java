@@ -22,7 +22,7 @@ public class Todo {
 
     private String task;
 
-    private LocalDateTime time;
+    private LocalDateTime scheduledAt;
 
     private boolean completed;
 

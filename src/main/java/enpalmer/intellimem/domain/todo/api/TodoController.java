@@ -19,9 +19,9 @@ import java.util.List;
 public class TodoController {
     private final TodoService todoService;
 
-    @GetMapping("/{userId}")
+    @GetMapping("")
     @Operation(summary = "특정 유저 오늘의 할일 조회")
-    public List<TodoInfoResponse> getTodoListById(@PathVariable String userId){
+    public List<TodoInfoResponse> getTodoListById(@RequestParam String userId){
         return todoService.getTodoListByUserId(userId);
     }
 
@@ -31,7 +31,7 @@ public class TodoController {
         return todoService.createNewTodo(createTodoRequest);
     }
 
-    @PatchMapping("/{todoId}")
+    @PatchMapping("")
     @Operation(summary = "특정 유저의 오늘의 할일 상태 변경")
     public int updateTodoStatus(@RequestBody UpdateTodoStatusRequest updateTodoStatusRequest){
         return todoService.updateTodoStatus(updateTodoStatusRequest);

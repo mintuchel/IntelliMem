@@ -13,11 +13,11 @@ import java.util.List;
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
     // 모든 TODO 조회
-    @Query(value = "SELECT * FROM todo WHERE user_id =:user_id", nativeQuery = true)
+    @Query(value = "SELECT * FROM todo WHERE user_id =:user_id ORDER BY scheduled_at ASC", nativeQuery = true)
     List<Todo> getCertainDateTodoByUserId(@Param("user_id") String user_id);
 
     // 당일 TODO 들만 가져오기
-    @Query(value = "SELECT * FROM todo WHERE user_id = :user_id ORDER BY scheduled_at DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM todo WHERE user_id = :user_id ORDER BY scheduled_at ASC", nativeQuery = true)
     List<Todo> getTodoByUserId(@Param("user_id") String user_id);
 
     // 특정 일자 TODO 만 가져오기

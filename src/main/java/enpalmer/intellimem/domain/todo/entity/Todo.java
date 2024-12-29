@@ -24,6 +24,8 @@ public class Todo {
 
     private LocalDateTime scheduledAt;
 
+    private boolean hasTime;
+
     private boolean completed;
 
     private boolean calendered;

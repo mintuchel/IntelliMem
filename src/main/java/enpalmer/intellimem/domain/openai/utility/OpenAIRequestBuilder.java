@@ -58,9 +58,9 @@ public class OpenAIRequestBuilder {
             
             # Instructions:
             - Identify specific tasks and their associated times from the input sentence.
-            - When handling LocalDateTime, ensure it aligns with the South Korean local time (KST, UTC+9).
+            - When handling time, ensure the date part reflects the current date in South Korea (KST, UTC+9).
             - If a time is explicitly mentioned, extract it and associate it with the relevant task.
-            - If relative times like "tomorrow" or “the day after tommorow” or “next day” are mentioned, calculate the exact date and time based on today's date.
+            - If relative times like "tomorrow" or “the day after tommorow” or “next day” are mentioned, calculate the exact date and time based on South Korea today's date.
             - Use the format "YYYY-MM-DD HH:mm" for all timestamps.
             - If terms like “ten minutes later”, “three hours later", "this afternoon", "this morning", "this evening", "today afternoon", etc. are mentioned, infer the appropriate time based on the current time of day and associate it with the task. For example:
                 - two hours later" should add 2 hours to the current time.

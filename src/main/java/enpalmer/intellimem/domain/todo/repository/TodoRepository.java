@@ -12,6 +12,7 @@ import java.util.List;
 
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
+
     // 모든 TODO 조회
     @Query(value = "SELECT * FROM todo WHERE user_id =:user_id ORDER BY scheduled_at ASC", nativeQuery = true)
     List<Todo> getCertainDateTodoByUserId(@Param("user_id") String user_id);
@@ -21,10 +22,18 @@ public interface TodoRepository extends JpaRepository<Todo, Integer> {
     List<Todo> getTodoByUserId(@Param("user_id") String user_id);
 
     // 특정 일자 TODO 만 가져오기
+    @Query(value = "SELECT * FROM todo WHERE user_id = :user_id AND CAST(scheduled_at AS DATE) = :today", nativeQuery = true)
+    List<Todo> getTodayTodoListByUserId(@Param("user_id") String user_id, @Param("today") String today);
 
-    // 업데이트 하기
+    // TODO completed 업데이트
     @Modifying
     @Transactional
     @Query(value = "UPDATE todo SET completed = CASE WHEN completed = 1 THEN 0 ELSE 1 END WHERE id = :todo_id", nativeQuery = true)
-    void changeTodoStatus(@Param("todo_id") int todo_id);
+    void updateCompletedStatus(@Param("todo_id") int todo_id);
+
+    // TODO calendered 업데이트
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE todo SET calendered = CASE WHEN calendered = 1 THEN 0 ELSE 1 END WHERE id = :todo_id", nativeQuery = true)
+    void updateCalenderedStatus(@Param("todo_id") int todo_id);
 }

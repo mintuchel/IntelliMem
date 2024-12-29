@@ -16,8 +16,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 @Service
@@ -27,6 +27,24 @@ public class TodoService {
     private final DateTimeFormatterUtil dateTimeFormatterUtil;
     private final TodoRepository todoRepository;
     private final UserRepository userRepository;
+
+    @Transactional
+    public int createNewTodo(CreateTodoRequest createTodoRequest){
+        User user = userRepository.findById(createTodoRequest.userId())
+                .orElseThrow(()-> new UserException(UserErrorCode.NOT_FOUND));
+
+        Todo todo = Todo.builder()
+                .user(user)
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime(createTodoRequest.time()))
+                .task(createTodoRequest.task())
+                .completed(false)
+                .calendered(false)
+                .build();
+
+        todoRepository.save(todo);
+
+        return todo.getId();
+    }
 
     @Transactional(readOnly = true)
     public List<TodoInfoResponse> getTodoListByUserId(String userId){
@@ -40,29 +58,50 @@ public class TodoService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
+    public List<TodoInfoResponse> getTodayTodoListByUserId(String userId){
+
+        // 한국 시간대로 오늘 날짜 계산
+        String today = LocalDate.now(ZoneId.of("Asia/Seoul")).toString();
+
+        return todoRepository.getTodayTodoListByUserId(userId, today).stream()
+                .map(todo -> new TodoInfoResponse(
+                        todo.getId(),
+                        todo.getTask(),
+                        dateTimeFormatterUtil.localDateTimeToString(todo.getScheduledAt()),
+                        todo.isCalendered(),
+                        todo.isCompleted()))
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<TodoInfoResponse> getCertainDateTodoListByUserId(String userId, String date){
+        return todoRepository.getTodayTodoListByUserId(userId, date).stream()
+                .map(todo -> new TodoInfoResponse(
+                        todo.getId(),
+                        todo.getTask(),
+                        dateTimeFormatterUtil.localDateTimeToString(todo.getScheduledAt()),
+                        todo.isCalendered(),
+                        todo.isCompleted()))
+                .toList();
+    }
+
     @Transactional
-    public int createNewTodo(CreateTodoRequest createTodoRequest){
-        User user = userRepository.findById(createTodoRequest.userId())
-                .orElseThrow(()-> new UserException(UserErrorCode.NOT_FOUND));
+    public int updateCompletedStatus(UpdateTodoStatusRequest updateTodoStatusRequest){
+        Todo todo = todoRepository.findById(updateTodoStatusRequest.todoId())
+                .orElseThrow(() -> new TodoException(TodoErrorCode.NOT_FOUND));
 
-        Todo todo = Todo.builder()
-                .user(user)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime(createTodoRequest.time()))
-                .task(createTodoRequest.task())
-                .completed(false)
-                .build();
-
-        todoRepository.save(todo);
+        todoRepository.updateCompletedStatus(todo.getId());
 
         return todo.getId();
     }
 
     @Transactional
-    public int updateTodoStatus(UpdateTodoStatusRequest updateTodoStatusRequest){
+    public int updateCalenderedStatus(UpdateTodoStatusRequest updateTodoStatusRequest){
         Todo todo = todoRepository.findById(updateTodoStatusRequest.todoId())
                 .orElseThrow(() -> new TodoException(TodoErrorCode.NOT_FOUND));
 
-        todoRepository.changeTodoStatus(todo.getId());
+        todoRepository.updateCalenderedStatus(todo.getId());
 
         return todo.getId();
     }

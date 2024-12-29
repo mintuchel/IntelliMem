@@ -11,7 +11,7 @@ import enpalmer.intellimem.domain.openai.service.OpenAIService;
 @RestController
 @RequestMapping("/api/v1/openai")
 @RequiredArgsConstructor
-@Tag(name = "OPENAI API", description = "TODO LIST 파싱받기")
+@Tag(name = "OpenAI API", description = "OpenAI 활용")
 public class OpenAIController {
 
     private final OpenAIService openAIService;

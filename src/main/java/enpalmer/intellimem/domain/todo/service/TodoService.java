@@ -46,6 +46,12 @@ public class TodoService {
         return todo.getId();
     }
 
+    @Transactional
+    public String deleteTodo(int todoId){
+        todoRepository.deleteById(todoId);
+        return "deleted";
+    }
+
     @Transactional(readOnly = true)
     public List<TodoInfoResponse> getTodoListByUserId(String userId){
         return todoRepository.getTodoByUserId(userId).stream()

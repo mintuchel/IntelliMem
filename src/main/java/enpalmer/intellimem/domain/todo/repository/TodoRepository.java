@@ -13,6 +13,10 @@ import java.util.List;
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
 
+    // TODO 삭제
+    @Query(value = "DELETE FROM todo WHERE id = :id", nativeQuery = true)
+    void deleteById(@Param("id") Integer id);
+
     // 모든 TODO 조회
     @Query(value = "SELECT * FROM todo WHERE user_id =:user_id ORDER BY scheduled_at ASC", nativeQuery = true)
     List<Todo> getCertainDateTodoByUserId(@Param("user_id") String user_id);

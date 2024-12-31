@@ -43,6 +43,12 @@ public class TodoController {
         return todoService.createNewTodo(createTodoRequest);
     }
 
+    @DeleteMapping("")
+    @Operation(summary = "특정 유저 오늘의 할일 삭제")
+    public String deleteTodo(@RequestParam int todoId){
+        return todoService.deleteTodo(todoId);
+    }
+
     @PatchMapping("/completed")
     @Operation(summary = "특정 유저의 오늘의 할일 실행완료/실행취소")
     public int updateCompletedStatus(@RequestBody UpdateTodoStatusRequest updateTodoStatusRequest){

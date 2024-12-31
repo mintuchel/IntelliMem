@@ -58,7 +58,7 @@ public class OpenAIRequestBuilder {
             
             # Instructions:
             - Identify specific tasks and their associated times from the input sentence.
-            - When handling time, ensure the date part reflects the current date in South Korea (KST, UTC+9).
+            - When handling time, ensure the date part reflects the current date in South Korea which is the result of String today = LocalDate.now(ZoneId.of("Asia/Seoul")).toString();.
             - If a time is explicitly mentioned, extract it and associate it with the relevant task.
             - If relative times like "tomorrow" or “the day after tommorow” or “next day” are mentioned, calculate the exact date and time based on South Korea today's date.
             - Use the format "YYYY-MM-DD HH:mm" for all timestamps.

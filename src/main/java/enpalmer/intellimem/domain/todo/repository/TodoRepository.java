@@ -14,6 +14,7 @@ import java.util.List;
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
 
     // TODO 삭제
+    @Modifying
     @Query(value = "DELETE FROM todo WHERE id = :id", nativeQuery = true)
     void deleteById(@Param("id") Integer id);
 

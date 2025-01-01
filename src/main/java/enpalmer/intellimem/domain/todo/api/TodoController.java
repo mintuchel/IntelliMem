@@ -19,6 +19,12 @@ import java.util.List;
 public class TodoController {
     private final TodoService todoService;
 
+    @PostMapping("")
+    @Operation(summary = "특정 유저 오늘의 할일 추가")
+    public int createTodo(@RequestBody CreateTodoRequest createTodoRequest){
+        return todoService.createNewTodo(createTodoRequest);
+    }
+
     @GetMapping("/{todoId}")
     @Operation(summary = "TODO 단건 조회")
     public TodoInfoResponse getTodoById(@PathVariable int todoId){
@@ -41,12 +47,6 @@ public class TodoController {
     @Operation(summary = "특정 유저의 TODO 특정 날짜 조회")
     public List<TodoInfoResponse> getCertainDateTodoListByUserId(@RequestParam String userId, @RequestParam String date){
         return todoService.getCertainDateTodoListByUserId(userId, date);
-    }
-
-    @PostMapping("")
-    @Operation(summary = "특정 유저 오늘의 할일 추가")
-    public int createTodo(@RequestBody CreateTodoRequest createTodoRequest){
-        return todoService.createNewTodo(createTodoRequest);
     }
 
     @DeleteMapping("")

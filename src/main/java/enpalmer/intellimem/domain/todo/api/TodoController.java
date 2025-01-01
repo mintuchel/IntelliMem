@@ -19,19 +19,25 @@ import java.util.List;
 public class TodoController {
     private final TodoService todoService;
 
-    @GetMapping("all")
+    @GetMapping("/{todoId}")
+    @Operation(summary = "TODO 단건 조회")
+    public TodoInfoResponse getTodoById(@PathVariable int todoId){
+        return todoService.getTodoById(todoId);
+    }
+
+    @GetMapping("/all")
     @Operation(summary = "특정 유저의 TODO 전체 조회")
     public List<TodoInfoResponse> getAllTodoListByUserId(@RequestParam String userId){
         return todoService.getTodoListByUserId(userId);
     }
 
-    @GetMapping("today")
+    @GetMapping("/today")
     @Operation(summary = "특정 유저의 TODO 당일 조회")
     public List<TodoInfoResponse> getTodayTodoListByUserId(@RequestParam String userId){
         return todoService.getTodayTodoListByUserId(userId);
     }
 
-    @GetMapping("calender")
+    @GetMapping("/calender")
     @Operation(summary = "특정 유저의 TODO 특정 날짜 조회")
     public List<TodoInfoResponse> getCertainDateTodoListByUserId(@RequestParam String userId, @RequestParam String date){
         return todoService.getCertainDateTodoListByUserId(userId, date);

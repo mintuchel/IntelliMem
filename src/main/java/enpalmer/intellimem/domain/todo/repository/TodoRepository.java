@@ -17,17 +17,13 @@ public interface TodoRepository extends JpaRepository<Todo, Integer> {
     @Query(value = "DELETE FROM todo WHERE id = :id", nativeQuery = true)
     void deleteById(@Param("id") Integer id);
 
-    // 모든 TODO 조회
-    @Query(value = "SELECT * FROM todo WHERE user_id =:user_id ORDER BY scheduled_at ASC", nativeQuery = true)
-    List<Todo> getCertainDateTodoByUserId(@Param("user_id") String user_id);
-
-    // 당일 TODO 들만 가져오기
+    // 특정 유저의 모든 TODO 조회
     @Query(value = "SELECT * FROM todo WHERE user_id = :user_id ORDER BY scheduled_at ASC", nativeQuery = true)
-    List<Todo> getTodoByUserId(@Param("user_id") String user_id);
+    List<Todo> getTodoListByUserId(@Param("user_id") String user_id);
 
     // 특정 일자 TODO 만 가져오기
     @Query(value = "SELECT * FROM todo WHERE user_id = :user_id AND CAST(scheduled_at AS DATE) = :today", nativeQuery = true)
-    List<Todo> getTodayTodoListByUserId(@Param("user_id") String user_id, @Param("today") String today);
+    List<Todo> getCertainDateTodoListByUserId(@Param("user_id") String user_id, @Param("today") String today);
 
     // TODO completed 업데이트
     @Modifying

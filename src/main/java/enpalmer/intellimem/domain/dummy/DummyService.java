@@ -72,7 +72,7 @@ class DummyService {
                 .task("match with juventus")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-01 14:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-01 14:00"))
                 .build();
 
         Todo todo7 = Todo.builder()
@@ -80,7 +80,7 @@ class DummyService {
                 .calendered(false)
                 .completed(true)
                 .task("call sergio for iniesta")
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-01 09:30"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-01 09:30"))
                 .build();
 
         Todo todo8 = Todo.builder()
@@ -96,7 +96,7 @@ class DummyService {
                 .task("morning run")
                 .calendered(false)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-02 06:30"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-02 06:30"))
                 .build();
 
         Todo todo10 = Todo.builder()
@@ -104,7 +104,7 @@ class DummyService {
                 .task("team meeting")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-02 10:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-02 10:00"))
                 .build();
 
         Todo todo11 = Todo.builder()
@@ -112,7 +112,7 @@ class DummyService {
                 .task("lunch with Alex")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-02 12:30"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-02 12:30"))
                 .build();
 
         Todo todo12 = Todo.builder()
@@ -120,23 +120,23 @@ class DummyService {
                 .task("evening yoga")
                 .calendered(false)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-02 19:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-02 19:00"))
                 .build();
 
         Todo todo13 = Todo.builder()
                 .user(user)
-                .task("write report")
+                .task("write final exam report")
                 .calendered(false)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-03 09:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-03 09:00"))
                 .build();
 
         Todo todo14 = Todo.builder()
                 .user(user)
-                .task("call with mom")
+                .task("call mom for housing")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-03 11:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-03 11:00"))
                 .build();
 
         Todo todo15 = Todo.builder()
@@ -144,39 +144,39 @@ class DummyService {
                 .task("buy groceries")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-03 15:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-03 15:00"))
                 .build();
 
         Todo todo16 = Todo.builder()
                 .user(user)
-                .task("watch a movie")
+                .task("take 2 pink pills")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-03 20:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-03 07:30"))
                 .build();
 
         Todo todo17 = Todo.builder()
                 .user(user)
-                .task("doctor visit")
+                .task("visit doctor at denver street")
                 .calendered(false)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-04 08:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-04 10:20"))
                 .build();
 
         Todo todo18 = Todo.builder()
                 .user(user)
-                .task("project review")
+                .task("meet friends at mary's")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-04 10:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-04 14:00"))
                 .build();
 
         Todo todo19 = Todo.builder()
                 .user(user)
-                .task("pick up parcel")
+                .task("pick up ben")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-04 14:00"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-04 16:40"))
                 .build();
 
         Todo todo20 = Todo.builder()
@@ -184,7 +184,7 @@ class DummyService {
                 .task("dinner with Sam")
                 .calendered(true)
                 .completed(false)
-                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2024-01-04 19:30"))
+                .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-04 19:30"))
                 .build();
 
         em.persist(todo1);

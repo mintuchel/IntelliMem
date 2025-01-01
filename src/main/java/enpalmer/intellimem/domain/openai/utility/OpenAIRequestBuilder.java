@@ -43,7 +43,7 @@ public class OpenAIRequestBuilder {
         List<Map<String,String>> messages = setMessages(userVoiceInput);
         requestBody.put("messages",messages);
 
-        requestBody.put("temperature", 0.3);
+        requestBody.put("temperature", 0.1);
 
         return requestBody;
     }
@@ -58,11 +58,11 @@ public class OpenAIRequestBuilder {
             
             # Instructions:
             - Identify specific tasks and their associated times from the input sentence.
-            - When handling time, ensure the date part reflects the current date in South Korea which is the result of String today = LocalDate.now(ZoneId.of("Asia/Seoul")).toString();.
+            - Today’s date is explicitly set as 2025-01-01 00:00. When calculating any relative or explicit time expressions, always use this date and time as the starting reference.
             - If a time is explicitly mentioned, extract it and associate it with the relevant task.
             - If relative times like "tomorrow" or “the day after tommorow” or “next day” are mentioned, calculate the exact date and time based on South Korea today's date.
             - Use the format "YYYY-MM-DD HH:mm" for all timestamps.
-            - If terms like “ten minutes later”, “three hours later", "this afternoon", "this morning", "this evening", "today afternoon", etc. are mentioned, infer the appropriate time based on the current time of day and associate it with the task. For example:
+            - If terms like “ten minutes later”, “three hours later", "this afternoon", "this morning", "this evening", "today afternoon", etc. are mentioned, infer the appropriate time based on the current day(2025-01-01) and associate it with the task. For example:
                 - two hours later" should add 2 hours to the current time.
                 - "this afternoon" should associate a specific time of 3:00 PM.
                 - "this morning" should associate a specific time of 9:00 AM.

@@ -186,7 +186,7 @@ class DummyService {
                 .completed(false)
                 .scheduledAt(dateTimeFormatterUtil.stringToLocalDateTime("2025-01-04 19:30"))
                 .build();
-
+        
         em.persist(todo1);
         em.persist(todo2);
         em.persist(todo3);

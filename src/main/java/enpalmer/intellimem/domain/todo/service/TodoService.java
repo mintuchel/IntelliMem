@@ -6,7 +6,6 @@ import enpalmer.intellimem.domain.todo.dto.CreateTodoRequest;
 import enpalmer.intellimem.domain.todo.entity.Todo;
 import enpalmer.intellimem.domain.todo.repository.TodoRepository;
 import enpalmer.intellimem.domain.todo.utility.DateTimeFormatterUtil;
-import enpalmer.intellimem.domain.user.dto.UserInfoResponse;
 import enpalmer.intellimem.domain.user.repository.UserRepository;
 import enpalmer.intellimem.domain.user.entity.User;
 import enpalmer.intellimem.global.exception.errorcode.TodoErrorCode;

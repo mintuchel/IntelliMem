@@ -58,7 +58,7 @@ public class OpenAIRequestBuilder {
             
             # Instructions:
             - Identify specific tasks and their associated times from the input sentence.
-            - Today’s date is explicitly set as 2025-01-01 00:00. When calculating any relative or explicit time expressions, always use this date and time as the starting reference.
+            - Today’s date is explicitly set as 2025-01-03 00:00. When calculating any relative or explicit time expressions, always use this date and time as the starting reference.
             - If a time is explicitly mentioned, extract it and associate it with the relevant task.
             - If relative times like "tomorrow" or “the day after tommorow” or “next day” are mentioned, calculate the exact date and time based on South Korea today's date.
             - Use the format "YYYY-MM-DD HH:mm" for all timestamps.
